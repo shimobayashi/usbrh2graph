@@ -13,12 +13,19 @@ devices.each do |device|
   puts "version              : #{device.version}"
 
   while true
-    now = Time.now.strftime('%F %T')
-    t,h = device.getTempHumidTrue
-    puts "now                  : #{now}"
-    puts "corrected temperature: #{t}"
-    puts "corrected humidity   : #{h}"
-    ws << [now, h, t]
-    sleep 60 * 60
+    begin
+      now = Time.now.strftime('%F %T')
+      t,h = device.getTempHumidTrue
+      redo unless t and h
+      puts "now                  : #{now}"
+      puts "corrected temperature: #{t}"
+      puts "corrected humidity   : #{h}"
+      ws << [now, h, t]
+      sleep 60 * 60
+    rescue Exception
+      puts "Exception: #{$!.message}"
+      puts $1.backtrace
+      retry
+    end
   end
 end
