@@ -1,0 +1,3 @@
+[submodule "simple-googlespreadsheet-ruby"]
+	path = simple-googlespreadsheet-ruby
+	url = https://github.com/binzume/simple-googlespreadsheet-ruby.git
