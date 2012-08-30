@@ -12,5 +12,5 @@ ws = session.spreadsheet_by_key(spreadsheet_key).worksheets[0]
 puts ws.title
 
 p ws.row_count
-ws << [Time.now.sprintf('%Z'), 30, 60]
+ws << [Time.now.strftime('%F %T'), 60, 30]
 p ws.row_count
