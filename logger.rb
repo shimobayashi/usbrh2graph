@@ -9,7 +9,8 @@ ws = session.spreadsheet_by_key(spreadsheet_key).worksheets[0]
 
 begin
   devices = RHDevices.new
-  device = devices.divices[0]
+  device = nil
+  devices.each {|d| device = d}
   if device
     puts "name                 : #{device.name}"
     puts "version              : #{device.version}"
