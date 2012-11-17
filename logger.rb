@@ -28,11 +28,15 @@ begin
       rescue Exception
         puts "Exception: #{$!.message}"
         puts $1.backtrace
+        puts 'wait 60sec...'
+        sleep 60
         retry
       end
     end
+  else
+    puts 'device not found'
   end
-rescue => exc
+rescue Exception
   puts "Exception: #{$!.message}"
   puts $1.backtrace
   puts 'wait 60sec...'
