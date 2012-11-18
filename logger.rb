@@ -27,7 +27,7 @@ begin
         sleep 60 * 60
       rescue Exception
         puts "Exception: #{$!.message}"
-        puts $1.backtrace
+        puts $!.backtrace
         puts 'wait 60sec...'
         sleep 60
         retry
@@ -38,7 +38,7 @@ begin
   end
 rescue Exception
   puts "Exception: #{$!.message}"
-  puts $1.backtrace
+  puts $!.backtrace
   puts 'wait 60sec...'
   sleep 60
   retry
