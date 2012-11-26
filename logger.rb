@@ -16,22 +16,14 @@ begin
     puts "version              : #{device.version}"
 
     while true
-      begin
-        now = Time.now.strftime('%F %T')
-        t,h = device.getTempHumidTrue
-        redo unless t and h
-        puts "now                  : #{now}"
-        puts "corrected temperature: #{t}"
-        puts "corrected humidity   : #{h}"
-        ws << [now, h, t]
-        sleep 60 * 60
-      rescue Exception
-        puts "Exception: #{$!.message}"
-        puts $!.backtrace
-        puts 'wait 60sec...'
-        sleep 60
-        retry
-      end
+      now = Time.now.strftime('%F %T')
+      t,h = device.getTempHumidTrue
+      redo unless t and h
+      puts "now                  : #{now}"
+      puts "corrected temperature: #{t}"
+      puts "corrected humidity   : #{h}"
+      ws << [now, h, t]
+      sleep 60 * 60
     end
   else
     puts 'device not found'
